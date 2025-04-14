@@ -40,7 +40,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'заявки', 'url' => ['/request/create'], 'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Мои заявки', 'url' => ['/request/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'регистрация', 'url' => ['/user/create'], 'visible' => Yii::$app->user->isGuest],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
