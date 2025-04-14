@@ -69,7 +69,7 @@ class Request extends \yii\db\ActiveRecord
             'id_type' => 'Вид услуги',
             'id_pay' => 'Тип оплаты',
             'id_user' => 'Id User',
-            'id_status' => 'Id Status',
+            'id_status' => 'Статус',
         ];
     }
 
@@ -111,6 +111,14 @@ class Request extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'id_user']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert && empty($this->id_status)) {
+            $this->id_status = 1;
+        }
+        return parent::beforeSave($insert);
     }
 
 }
