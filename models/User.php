@@ -37,6 +37,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['username', 'password', 'phone', 'fio', 'email'], 'required'],
             [['role'], 'integer'],
             [['username', 'password', 'phone', 'fio', 'email'], 'string', 'max' => 100],
+            ['username', 'unique', 'message' => 'логин занят'],
+            ['username', 'match', 'pattern' => '/^[A-z0-9]*$/u'],
+            ['fio', 'match', 'pattern' => '/^[А-яЁё - ]*$/u'],
+            ['password', 'string', 'min' => 6],
         ];
     }
 

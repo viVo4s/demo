@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'phone')->widget(yii\widgets\MaskedInput::class, ['mask' => '+7(999)-999-99-99']) ?>
 
     <?= $form->field($model, 'fio')->textInput(['maxlength' => true]) ?>
 
